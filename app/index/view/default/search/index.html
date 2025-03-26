@@ -1,0 +1,184 @@
+{{:ModuleInclude('public/header')}}
+
+<!-- header top nav -->
+{{:ModuleInclude('public/header_top_nav')}}
+
+<!-- search -->
+{{:ModuleInclude('public/nav_search')}}
+
+<!-- header nav -->
+{{:ModuleInclude('public/header_nav')}}
+
+<!-- goods category -->
+{{:ModuleInclude('public/goods_category')}}
+
+<!-- 搜索页面顶部钩子 -->
+{{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+    <div class="plugins-tag">
+        <span>plugins_view_search_top</span>
+    </div>
+{{/if}}
+{{if !empty($plugins_view_search_top_data) and is_array($plugins_view_search_top_data)}}
+    {{foreach $plugins_view_search_top_data as $hook}}
+        {{if is_string($hook) or is_int($hook)}}
+            {{$hook|raw}}
+        {{/if}}
+    {{/foreach}}
+{{/if}}
+
+<!-- 面包屑导航 -->
+{{:ModuleInclude('public/breadcrumb_data')}}
+
+<!-- content -->
+<div class="am-container">
+    <!-- 搜索页面顶部内部结构里面钩子 -->
+    {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+        <div class="plugins-tag">
+            <span>plugins_view_search_inside_top</span>
+        </div>
+    {{/if}}
+    {{if !empty($plugins_view_search_inside_top_data) and is_array($plugins_view_search_inside_top_data)}}
+        {{foreach $plugins_view_search_inside_top_data as $hook}}
+            {{if is_string($hook) or is_int($hook)}}
+                {{$hook|raw}}
+            {{/if}}
+        {{/foreach}}
+    {{/if}}
+
+    <div class="search-container am-u-sm-12 am-u-md-12 am-padding-left-0 am-padding-right-0" data-category-id="{{if !empty($params['category_id'])}}{{$params.category_id}}{{/if}}" data-brand-id="{{if !empty($params['brand_id'])}}{{$params.brand_id}}{{/if}}">
+        <!-- 手机模式下基础信息+搜索条件按钮 -->
+        <div class="map-base-tips am-nbfc am-padding-horizontal-xs am-padding-vertical-sm am-show-sm">
+            <p class="am-fl">
+                <span>{{:MyLang('search.filter_out_first_text')}}</span>
+                <strong class="map-result-count am-text-danger">{{$data_total}}</strong>
+                <span>{{:MyLang('search.filter_out_last_data_text')}}</span>
+            </p>
+            <button class="am-btn am-btn-primary am-btn-xs am-radius am-icon-filter map-offcanvas-submit" data-am-offcanvas="{target: '#search-map'}"></button>
+        </div>
+
+        <!-- 搜索条件顶部钩子 -->
+        {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+            <div class="plugins-tag">
+                <span>plugins_view_search_map_top</span>
+            </div>
+        {{/if}}
+        {{if !empty($plugins_view_search_map_top_data) and is_array($plugins_view_search_map_top_data)}}
+            {{foreach $plugins_view_search_map_top_data as $hook}}
+                {{if is_string($hook) or is_int($hook)}}
+                    {{$hook|raw}}
+                {{/if}}
+            {{/foreach}}
+        {{/if}}
+
+        <!-- 搜索条件内容、侧边栏内容 -->
+        {{:ModuleInclude('search/module/map/index', [
+            'search_map_info'          => empty($search_map_info) ? [] : $search_map_info,
+            'brand_list'               => empty($brand_list) ? [] : $brand_list,
+            'category_list'            => empty($category_list) ? [] : $category_list,
+            'screening_price_list'     => empty($screening_price_list) ? [] : $screening_price_list,
+            'goods_place_origin_list'  => empty($goods_place_origin_list) ? [] : $goods_place_origin_list,
+            'goods_params_list'        => empty($goods_params_list) ? [] : $goods_params_list,
+            'goods_spec_list'          => empty($goods_spec_list) ? [] : $goods_spec_list,
+        ])}}
+
+        <!-- 搜索页面搜索导航条顶部钩子 -->
+        {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+            <div class="plugins-tag">
+                <span>plugins_view_search_nav_top</span>
+            </div>
+        {{/if}}
+        {{if !empty($plugins_view_search_nav_top_data) and is_array($plugins_view_search_nav_top_data)}}
+            {{foreach $plugins_view_search_nav_top_data as $hook}}
+                {{if is_string($hook) or is_int($hook)}}
+                    {{$hook|raw}}
+                {{/if}}
+            {{/foreach}}
+        {{/if}}
+
+        <!-- 排序方式 -->
+        {{:ModuleInclude('search/module/sort_nav/index', [
+            'map_order_by_list' => empty($map_order_by_list) ? [] : $map_order_by_list
+        ])}}
+
+        <!-- 搜索页面数据容器顶部钩子 -->
+        {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+            <div class="plugins-tag">
+                <span>plugins_view_search_data_top</span>
+            </div>
+        {{/if}}
+        {{if !empty($plugins_view_search_data_top_data) and is_array($plugins_view_search_data_top_data)}}
+            {{foreach $plugins_view_search_data_top_data as $hook}}
+                {{if is_string($hook) or is_int($hook)}}
+                    {{$hook|raw}}
+                {{/if}}
+            {{/foreach}}
+        {{/if}}
+
+        <!-- 数据列表 -->
+        {{if !empty($data_list)}}
+            {{if $list_layout_value eq 1}}
+                {{:ModuleInclude('module/goods/list/base', [
+                    'goods_list'  => $data_list,
+                    'type'        => 'search',
+                ])}}
+            {{else /}}
+                {{:ModuleInclude('module/goods/grid/base', [
+                    'goods_list'  => $data_list,
+                    'type'        => 'search',
+                ])}}
+            {{/if}}
+        {{else /}}
+            {{:ModuleInclude('public/not_data')}}
+        {{/if}}
+
+        <!-- 搜索页面数据容器底部钩子 -->
+        {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+            <div class="plugins-tag">
+                <span>plugins_view_search_data_bottom</span>
+            </div>
+        {{/if}}
+        {{if !empty($plugins_view_search_data_bottom_data) and is_array($plugins_view_search_data_bottom_data)}}
+            {{foreach $plugins_view_search_data_bottom_data as $hook}}
+                {{if is_string($hook) or is_int($hook)}}
+                    {{$hook|raw}}
+                {{/if}}
+            {{/foreach}}
+        {{/if}}
+
+        <!-- 分页 -->
+        <div class="am-nbfc am-margin-top-sm">
+            {{$page_html|raw}}
+        </div>
+    </div>
+
+    <!-- 搜索页面顶部内部结构里面钩子 -->
+    {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+        <div class="plugins-tag">
+            <span>plugins_view_search_inside_bottom</span>
+        </div>
+    {{/if}}
+    {{if !empty($plugins_view_search_inside_bottom_data) and is_array($plugins_view_search_inside_bottom_data)}}
+        {{foreach $plugins_view_search_inside_bottom_data as $hook}}
+            {{if is_string($hook) or is_int($hook)}}
+                {{$hook|raw}}
+            {{/if}}
+        {{/foreach}}
+    {{/if}}
+</div>
+
+<!-- 搜索页面底部钩子 -->
+{{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+    <div class="plugins-tag">
+        <span>plugins_view_search_bottom</span>
+    </div>
+{{/if}}
+{{if !empty($plugins_view_search_bottom_data) and is_array($plugins_view_search_bottom_data)}}
+    {{foreach $plugins_view_search_bottom_data as $hook}}
+        {{if is_string($hook) or is_int($hook)}}
+            {{$hook|raw}}
+        {{/if}}
+    {{/foreach}}
+{{/if}}
+
+<!-- footer -->
+{{:ModuleInclude('public/footer')}}

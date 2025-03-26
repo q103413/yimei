@@ -1,0 +1,13 @@
+<!-- 取货信息 -->
+{{if !empty($module_data) and !empty($module_data['extraction_data'])}}
+    <p>
+        {{if empty($module_data['extraction_data']['code'])}}
+            <span class="am-text-danger">{{:MyLang('no_data')}}</span>
+        {{else /}}
+            <span class="text-copy-submit am-vertical-align-middle">{{$module_data.extraction_data.code}}</span>
+            {{if !empty($module_data['extraction_data']['images'])}}
+                <img class="am-img-thumbnail am-radius am-vertical-align-middle common-annex-view-event" src="{{$module_data.extraction_data.images}}" width="18" height="18" data-is-download="1" />
+            {{/if}}
+        {{/if}}
+    </p>
+{{/if}}

@@ -1,0 +1,258 @@
+/**
+ * 地址添加/编辑
+ */
+.address-list li {
+    padding: 1rem 1.2rem;
+    color: #333;
+}
+
+.address-list li:nth-child(odd) {
+    background-color: #fff;
+}
+
+.address-list li:nth-child(even) {
+    background: #F6F6F6;
+}
+
+.address-list .address-logo {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 0.2rem;
+    vertical-align: text-top;
+}
+
+.address-list .edit-submit,
+.address-list .delete-submit {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-main);
+    padding: 0 1rem;
+}
+
+.address-list .edit-submit:hover,
+.address-list .delete-submit:hover {
+    color: #146BE6;
+}
+
+@media only screen and (max-width:640px) {
+
+    .address-list .edit-submit,
+    .address-list .delete-submit {
+        position: absolute;
+        top: 1.2rem;
+        right: 0.5rem;
+        float: none !important;
+    }
+
+    .address-list .delete-submit {
+        right: 7rem;
+    }
+}
+
+/**
+ * 手动模式下商品列表容器
+ */
+.manual-mode-goods-container li {
+    position: relative;
+    background: #FFFFFF;
+}
+
+.manual-mode-goods-container li button.am-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.1rem 2.5rem 1.1rem 1.5rem;
+    color: #ddd;
+}
+
+.manual-mode-goods-container li:hover {
+    background: #F6F6F6;
+}
+
+.manual-mode-goods-container li:hover button.am-close {
+    color: var(--color-main);
+}
+
+.manual-mode-goods-container li a {
+    color: #333;
+    padding: 1rem 1.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.manual-mode-goods-container li:hover a {
+    color: var(--color-main);
+}
+
+/**
+ * 商品添加-搜索列表
+ */
+.goods-add-container {
+    height: 100%;
+}
+
+.forth-selection-container select.forth-selection-form-category {
+    display: -webkit-inline-box;
+}
+
+.forth-selection-container .forth-selection-form-category,
+.forth-selection-container .chosen-container,
+.forth-selection-container .forth-selection-form-keywords {
+    width: calc(50% - 4.8rem) !important;
+}
+
+.forth-selection-container .chosen-container,
+.forth-selection-container .forth-selection-form-keywords {
+    display: -webkit-inline-box !important;
+}
+
+.forth-selection-container .chosen-single {
+    width: 100%;
+}
+
+.forth-selection-container .search-submit {
+    width: 8.7rem;
+}
+
+.goods-list-container {
+    height: calc(100% - 9.2rem);
+    max-height: 100%;
+    border: 0.1rem solid #eee;
+}
+
+.goods-list-container .am-gallery-bordered .am-gallery-title {
+    margin-top: 0.5rem;
+}
+
+.goods-list-container ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+.goods-list-container ul li:hover .am-gallery-item {
+    -webkit-box-shadow: 0 0 0.6rem var(--color-blue);
+    box-shadow: 0 0 0.6rem var(--color-blue);
+}
+
+.goods-list-container .icon-submit-container {
+    position: absolute;
+    right: -0.3rem;
+    top: -1rem;
+}
+
+.goods-page-container {
+    height: 4rem;
+}
+
+/**
+ * 域名对应语言
+ */
+
+.domain-multilingual-list>ul {
+    max-width: 90rem;
+}
+
+.domain-multilingual-list>ul li input.item-domain-input,
+.domain-multilingual-list>ul li .item-multilingual-choice {
+    width: calc(50% - 4rem) !important;
+}
+
+.domain-multilingual-list .delete-btn {
+    padding: 0.6rem 1.2rem;
+}
+
+/**
+ * 多语言图标
+ */
+.multilingual-content > .am-inline-block:not(:last-child) {
+    margin-right: 1.22rem;
+}
+.multilingual-content .am-checkbox-inline {
+    margin: 0;
+}
+.multilingual-content ul.plug-file-upload-view {
+    padding: 0 !important;
+}
+
+
+/* 拖拽模式 */
+.drop-mode img {
+    width: 22rem;
+}
+
+/* 站点类型、默认支付方式 */
+.default-payment-list span,
+.site-type-list span {
+    min-width: 8rem;
+}
+
+/* 扩展-多语言 */
+.multilingual-content {
+    padding: 1rem;
+    background: #F9F9F9;
+    border-radius: var(--border-radius);
+}
+
+.auto-hand-cart>li {
+    margin-bottom: 2rem;
+}
+
+.auto-hand-cart>li:last-child {
+    margin-bottom: 0;
+}
+
+/* 自提地址弹窗 */
+.content-right>.content #popup-address-win form .form-multiple-where-input,
+.content-right>.content #popup-address-win form input,
+.content-right>.content #popup-address-win form .chosen-select {
+    max-width: 100%;
+}
+
+/**
+ * 网站设置商品分类
+ */
+.level-type-content .item {
+    display: none;
+}
+
+.level-type-content .item.am-active {
+    display: block;
+}
+
+.level-type-content .item>div {
+    gap: 6rem;
+}
+.level-type-content .item>div p {
+    text-align: center;
+    font-size: 1.4rem;
+    font-family: PingFangSC,
+    PingFang SC;
+    font-weight: 500;
+    color: #666666;
+}
+
+.level-type-content .item img {
+    max-height: 44.7rem;
+    box-shadow: 0.1rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 1200px) {
+    .level-type-content .item {
+        gap: 4rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .level-type-content .item {
+        gap: 3rem;
+    }
+}
+@media only screen and (max-width: 640px) {
+    .level-type-content .item {
+        gap: 1.5rem;
+    }
+    .level-type-content .item img {
+        max-height: 20rem;
+    }
+}

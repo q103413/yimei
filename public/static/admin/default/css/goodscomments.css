@@ -1,0 +1,18 @@
+/**
+ * 列表
+ */
+.content-right table.am-table .reply-content,
+.content-right table.am-table .am-gallery .am-gallery-item {
+    max-height: 4.5rem;
+}
+
+/**
+ * 编辑
+ */
+.goods-info a {
+    color: var(--color-blue);
+    font-size: 1.4rem !important;
+}
+.user-info-dropdown-data-container > a i {
+    margin-top: 0.4rem;
+}

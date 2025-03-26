@@ -1,0 +1,75 @@
+<!-- 继承公共的 form -->
+{{extend name="../../../module/view/form_table/detail" /}}
+
+<!-- 重写数据模块 -->
+{{block name="detail_data"}}
+    {{:ModuleInclude('public/detail_nav_switch_tabs', [
+        'nav_data' => [
+            [
+                'name' => MyLang('form_base_data_title'),
+                'key'  => 'base',
+            ],
+            [
+                'name' => MyLang('article.detail_content_title'),
+                'key'  => 'detail-content',
+            ],
+            [
+                'name' => MyLang('article.detail_images_title'),
+                'key'  => 'detail-images',
+            ],
+            [
+                'name' => MyLang('form_seo_data_title'),
+                'key'  => 'seo-data',
+            ]
+        ]
+    ])}}
+    <div class="detail-content-switch-data-item">
+        <!-- 父级内容 -->
+        <div class="item am-active" data-key="base">
+            {__block__}
+        </div>
+        
+        <!-- 详情内容 -->
+        <div class="item am-padding-sm" data-key="detail-content">
+            {{if !empty($data['content'])}}
+                <div class="am-nowrap-initial richtext">
+                    {{$data.content|raw}}
+                </div>
+            {{else /}}
+                {{:ModuleInclude('public/not_data')}}
+            {{/if}}
+        </div>
+
+        <!-- 详情图片 -->
+        <div class="item am-padding-sm" data-key="detail-images">
+            {{if !empty($data['images'])}}
+                <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{"controlNav":false}'>
+                    <ul class="am-slides">
+                        {{foreach $data.images as $ik=>$iv}}
+                            <li>
+                                <a href="{{$iv}}" target="_blank">
+                                    <img src="{{$iv}}" />
+                                </a>
+                                <div class="am-slider-desc">
+                                    <div class="am-slider-counter">
+                                        <strong class="am-text-lg">{{$ik+1}}</strong>
+                                        <span class="am-margin-right-sm">/{{:count($data['images'])}}</span>
+                                        <span>{{$iv}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+            {{else /}}
+                {{:ModuleInclude('public/not_data')}}
+            {{/if}}
+        </div>
+
+        <!-- SEO信息 -->
+        <div class="item am-padding-sm" data-key="seo-data">
+            {{:ModuleInclude('lib/seo_data')}}
+        </div>
+
+    </div>
+{{/block}}

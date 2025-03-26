@@ -1,0 +1,38 @@
+/**
+ * 登录、注册、密码找回
+ */
+.user-form-content-container {
+    position: relative;
+}
+
+/**
+ * 登录页面窗口高度固定
+ */
+.user-login-content-container {
+    min-height: 43rem;
+}
+.user-login-content-container.not-login-verify {
+    min-height: 39rem;
+}
+.user-login-content-container .bottom-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/**
+ * 底部内容处理
+ */
+.footer-nav-content,
+.friendship-list {
+	display: none;
+}
+.am-footer-default,
+.am-footer-miscs > .am-container {
+	border-top: 0;
+}
+.am-footer-default {
+    background: var(--body-bg-color);
+}

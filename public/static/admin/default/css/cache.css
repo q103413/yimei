@@ -1,0 +1,18 @@
+.cache-item:last-child {
+    border: 0;
+}
+
+.cache-item label {
+    font-weight: 500;
+}
+
+.cache-item label .am-form-group-label-tips {
+    color: #ccc;
+    font-weight: 400;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.cache-item:hover label .am-form-group-label-tips {
+    color: var(--color-main);
+}

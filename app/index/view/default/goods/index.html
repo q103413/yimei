@@ -1,0 +1,64 @@
+{{:ModuleInclude('public/header')}}
+
+<!-- header top nav -->
+{{:ModuleInclude('public/header_top_nav')}}
+
+<!-- search -->
+{{:ModuleInclude('public/nav_search')}}
+
+<!-- header nav -->
+{{:ModuleInclude('public/header_nav')}}
+
+<!-- goods category -->
+{{:ModuleInclude('public/goods_category')}}
+
+<!-- 面包屑导航 -->
+{{:ModuleInclude('public/breadcrumb_data')}}
+
+<!-- 商品详情 -->
+<div class="system-goods-detail" data-id="{{$goods.id}}" data-unit="{{$goods.inventory_unit}}" data-spec-detail-ajax-url="{{:MyUrl('index/goods/specdetail')}}" data-spec-type-ajax-url="{{:MyUrl('index/goods/spectype')}}">
+    <!-- h5相册模块 -->
+    {{:ModuleInclude('goods/module/photo_h5/index', ['goods'=>$goods])}}
+
+    <!-- 基础信息 -->
+    {{:ModuleInclude('goods/module/middle_base/index', ['goods'=>$goods])}}
+
+    <!-- 商品页基础信息底部钩子 开始 -->
+    {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+        <div class="plugins-tag">
+            <span>plugins_view_goods_detail_base_bottom</span>
+        </div>
+    {{/if}}
+    {{if !empty($plugins_view_goods_detail_base_bottom_data) and is_array($plugins_view_goods_detail_base_bottom_data)}}
+        {{foreach $plugins_view_goods_detail_base_bottom_data as $hook}}
+            {{if is_string($hook) or is_int($hook)}}
+                {{$hook|raw}}
+            {{/if}}
+        {{/foreach}}
+    {{/if}}
+    <!-- 商品页基础信息底部钩子 结束 -->
+
+    <!-- 底部信息模块 -->
+    {{:ModuleInclude('goods/module/bottom_base/index', ['goods'=>$goods, 'left_goods'=>isset($left_goods) ? $left_goods : []])}}
+</div>
+
+{{:ModuleInclude('public/footer')}}
+
+<script type="text/javascript">
+// 购物车回调
+function CartSubmitBack(e)
+{
+    if(e.code == 0)
+    {
+        // 更新公共购物车数量
+        HomeCartNumberTotalUpdate(e.data.buy_number);
+
+        // 展示购物车成功提示弹窗
+        HomeUserCartSuccessModal(e.data.buy_number);
+    } else {
+        Prompt(e.msg);
+    }
+    $.AMUI.progress.done();
+    $('form.cart-form').find('button[type="submit"]').button('reset');
+}
+</script>

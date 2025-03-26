@@ -1,0 +1,35 @@
+/* 插件权限 */
+.tree-plugins {
+    background: transparent;
+}
+
+.tree-plugins li {
+    min-width: 180px;
+    width: 10%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.tree-plugins label.am-checkbox-inline {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.tree-plugins label.am-checkbox-inline .am-ucheck-icons {
+    top: 0.2rem;
+}
+.tree-plugins li label.am-checkbox-inline .am-ucheck-icons {
+    top: 0.3rem;
+}
+
+.tree-plugins li>div {
+    background: #fff;
+    padding: 1rem;
+}
+
+@media only screen and (max-width:641px) {
+    .tree-plugins li {
+        width: 50%;
+        min-width: auto;
+    }
+}

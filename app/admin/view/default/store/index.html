@@ -1,0 +1,22 @@
+{{:ModuleInclude('public/header')}}
+        
+<!-- right content  -->
+<div class="content-right">
+    <div class="content">
+        {{if $is_not_bind_accounts eq 1}}
+            {{:ModuleInclude('public/store_bind_accounts_tips')}}
+        {{else /}}
+            {{:ModuleInclude('public/market/index', [
+                'type'                   => '',
+                'back_win_refresh_type'  => 'none',
+                'search_url'             => MyUrl('admin/store/market'),
+                'more_download_url'      => empty($store_url) ? '' : $store_url,
+                'more_download_name'     => MyLang('store.to_store_name'),
+            ])}}
+        {{/if}}
+    </div>
+</div>
+<!-- right content end  -->
+
+<!-- footer -->
+{{:ModuleInclude('public/footer')}}

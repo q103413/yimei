@@ -1,0 +1,30 @@
+{{:ModuleInclude('public/header')}}
+
+<!-- header nav start -->
+{{if isset($is_header) and $is_header eq 1}}
+    <!-- header top nav -->
+    {{:ModuleInclude('public/header_top_nav')}}
+
+    <!-- search -->
+    {{:ModuleInclude('public/nav_search')}}
+
+    <!-- header nav -->
+    {{:ModuleInclude('public/header_nav')}}
+
+    <!-- goods category -->
+    {{:ModuleInclude('public/goods_category')}}
+{{/if}}
+<!-- header nav end -->
+
+<!-- content start -->
+{{if !empty($layout_data)}}
+    {{:ModuleInclude('../../../module/view/layout/view')}}
+{{else /}}
+    <div class="am-container">
+        {{:ModuleInclude('public/not_data')}}
+    </div>
+{{/if}}
+<!-- content end -->
+
+<!-- footer start -->
+{{:ModuleInclude('public/footer')}}

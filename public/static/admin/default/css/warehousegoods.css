@@ -1,0 +1,67 @@
+/**
+ * 商品添加-搜索列表
+ */
+.goods-add-container {
+    height: 100%;
+}
+
+.forth-selection-container select.forth-selection-form-category {
+    display: -webkit-inline-box;
+}
+
+.forth-selection-container .forth-selection-form-category,
+.forth-selection-container .chosen-container,
+.forth-selection-container .forth-selection-form-keywords {
+    width: calc(33% - 3.2rem) !important;
+}
+
+.forth-selection-container .chosen-container,
+.forth-selection-container .forth-selection-form-keywords {
+    display: -webkit-inline-box !important;
+}
+
+.forth-selection-container .chosen-single {
+    width: 100%;
+}
+
+.forth-selection-container .search-submit {
+    width: 8.7rem;
+}
+
+.goods-list-container {
+    height: calc(100% - 9.2rem);
+    max-height: 100%;
+    border: 0.1rem solid #eee;
+}
+
+.goods-list-container .am-gallery-bordered .am-gallery-title {
+    margin-top: 0.5rem;
+}
+
+.goods-list-container ul li {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goods-list-container ul li:hover .am-gallery-item {
+    -webkit-box-shadow: 0 0 0.6rem var(--color-blue);
+    box-shadow: 0 0 0.6rem var(--color-blue);
+}
+
+.goods-list-container .icon-submit-container {
+    position: absolute;
+    right: -0.3rem;
+    top: -1rem;
+}
+
+.goods-page-container {
+    height: 4rem;
+}
+
+/**
+ * 数据列表规格展示
+ */
+.spec-inventory-list .am-modal ul li {
+    border-bottom: 0.1rem solid #fafafa;
+}

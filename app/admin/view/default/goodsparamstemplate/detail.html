@@ -1,0 +1,29 @@
+<!-- 继承公共的 form -->
+{{extend name="../../../module/view/form_table/detail" /}}
+
+<!-- 重写数据模块 -->
+{{block name="detail_data"}}
+    {{:ModuleInclude('public/detail_nav_switch_tabs', [
+        'nav_data' => [
+            [
+                'name' => MyLang('form_base_data_title'),
+                'key'  => 'base',
+            ],
+            [
+                'name' => MyLang('goodsparamstemplate.detail_params_title'),
+                'key'  => 'goodsparamstemplate-detail_params_title',
+            ]
+        ]
+    ])}}
+    <div class="detail-content-switch-data-item">
+        <!-- 父级内容 -->
+        <div class="item am-active" data-key="base">
+            {__block__}
+        </div>
+
+        <!-- 商品参数 -->
+        <div class="item" data-key="goodsparamstemplate-detail_params_title">
+            {{:ModuleInclude('public/goodsparamstemplate/detail')}}
+        </div>
+    </div>
+{{/block}}

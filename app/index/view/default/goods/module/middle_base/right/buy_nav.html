@@ -1,0 +1,125 @@
+<!-- 右侧基础购买导航模块 -->
+{{if !empty($module_data['goods'])}}
+    <div class="buy-nav">
+        <div class="buy-nav-opt buy-nav-opt-number-{{if !empty($buy_left_nav)}}{{:count($buy_left_nav)}}{{else /}}1{{/if}}">
+            <!-- 商品页面基础信息购买小导航内部前面钩子 开始 -->
+            {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+                <div class="plugins-tag">
+                    <span>plugins_view_goods_detail_base_buy_nav_min_inside_begin</span>
+                </div>
+            {{/if}}
+            {{if !empty($plugins_view_goods_detail_base_buy_nav_min_inside_begin_data) and is_array($plugins_view_goods_detail_base_buy_nav_min_inside_begin_data)}}
+                {{foreach $plugins_view_goods_detail_base_buy_nav_min_inside_begin_data as $hook}}
+                    {{if is_string($hook) or is_int($hook)}}
+                        {{$hook|raw}}
+                    {{/if}}
+                {{/foreach}}
+            {{/if}}
+            <!-- 商品页面基础信息购买小导航内部前面钩子 结束 -->
+
+            <!-- 左侧导航操作 -->
+            {{if !empty($buy_left_nav) and is_array($buy_left_nav)}}
+                {{foreach $buy_left_nav as $v}}
+                    {{if isset($v['type'])}}
+                        <a href="{{if empty($v['url'])}}javascript:;{{else /}}{{$v.url}}{{/if}}" class="buy-nav-left-{{$v.type}}-submit {{if isset($v['active']) and $v['active'] eq 1}} am-active{{/if}} {{if !empty($v['class'])}} {{$v.class}}{{/if}}" data-gid="{{$module_data.goods.id}}" {{if !empty($v['document'])}}{{$v.document|raw}}{{/if}}>
+                            <span class="nav-icon nav-icon-{{$v.type}}">
+                                {{if isset($v['icon'])}}
+                                    <i class="{{$v.icon}}"></i>
+                                {{/if}}
+                                {{if isset($v['name'])}}
+                                    <em class="name">{{$v.name}}</em>
+                                {{/if}}
+                            </span>
+                        </a>
+                    {{/if}}
+                {{/foreach}}
+            {{/if}}
+
+            <!-- 商品页面基础信息购买小导航内部后面钩子 开始 -->
+            {{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+                <div class="plugins-tag">
+                    <span>plugins_view_goods_detail_base_buy_nav_min_inside</span>
+                </div>
+            {{/if}}
+            {{if !empty($plugins_view_goods_detail_base_buy_nav_min_inside_data) and is_array($plugins_view_goods_detail_base_buy_nav_min_inside_data)}}
+                {{foreach $plugins_view_goods_detail_base_buy_nav_min_inside_data as $hook}}
+                    {{if is_string($hook) or is_int($hook)}}
+                        {{$hook|raw}}
+                    {{/if}}
+                {{/foreach}}
+            {{/if}}
+            <!-- 商品页面基础信息购买小导航内部后面钩子 结束 -->
+        </div>
+
+        <!-- 购买容器 -->
+        {{if !empty($buy_button) and !empty($buy_button['count']) and !empty($buy_button['data']) and is_array($buy_button['data'])}}
+            <!-- 购买按钮列表 -->
+            <div class="buy-submit-container buy-submit-container-number-{{$buy_button.count}}">
+                {{foreach $buy_button.data as $v}}
+                    {{if !empty($v['type']) and !empty($v['name'])}}
+                        {{switch $v.type}}
+                            {{case show|tel}}
+                                <a href="{{if empty($v['value'])}}javascript:;{{else /}}tel:{{$v.value}}{{/if}}" 
+                                class="am-radius am-btn am-btn-primary {{if !empty($v['class'])}}{{$v.class}}{{/if}}" 
+                                data-type="{{$v.type}}" 
+                                data-value="{{if isset($v['value'])}}{{$v.value}}{{/if}}" 
+                                data-business="{{if isset($v['business'])}}{{$v.business}}{{/if}}">
+                                    {{if !empty($v['icon'])}}
+                                        <i class="{{$v.icon}}"></i>
+                                    {{/if}}
+                                    {{$v.name}}
+                                </a>
+                            {{/case}}
+                            {{case url|link}}
+                                <a href="{{if !empty($v['value'])}}{{$v.value}}{{/if}}" 
+                                {{if !empty($v['value'])}}target="_blank"{{/if}} 
+                                class="am-radius am-btn am-btn-{{if !empty($v['color']) and $v['color'] eq 'second'}}secondary{{else /}}primary{{/if}} {{if !empty($v['class'])}}{{$v.class}}{{/if}}">
+                                    {{if !empty($v['icon'])}}
+                                        <i class="{{$v.icon}}"></i>
+                                    {{/if}}
+                                    {{$v.name}}
+                                </a>
+                            {{/case}}
+                            {{case copy}}
+                                <button type="button" 
+                                {{if !empty($v['value'])}}data-value="{{$v.value}}"{{/if}} 
+                                class="am-radius am-btn am-btn-{{if !empty($v['color']) and $v['color'] eq 'second'}}secondary{{else /}}primary{{/if}} text-copy-submit {{if !empty($v['class'])}}{{$v.class}}{{/if}}">
+                                    {{if !empty($v['icon'])}}
+                                        <i class="{{$v.icon}}"></i>
+                                    {{/if}}
+                                    {{$v.name}}
+                                </button>
+                            {{/case}}
+                            {{default /}}
+                                <button type="button" 
+                                class="am-radius am-btn am-btn-{{if !empty($v['color']) and $v['color'] eq 'second'}}secondary{{else /}}primary{{/if}} {{$v.type}}-submit {{if !empty($v['class'])}}{{$v.class}} {{/if}}" 
+                                data-type="{{$v.type}}" 
+                                data-value="{{if isset($v['value'])}}{{$v.value}}{{/if}}" 
+                                data-business="{{if isset($v['business'])}}{{$v.business}}{{/if}}">
+                                    {{if !empty($v['icon'])}}
+                                        <i class="{{$v.icon}}"></i>
+                                    {{/if}}
+                                    {{$v.name}}
+                                </button>
+                        {{/switch}}
+                    {{/if}}
+                {{/foreach}}
+            </div>
+
+            <!-- 购买表单 -->
+            <form action="{{:MyUrl('index/buy/index')}}" method="post" class="buy-form am-hide">
+                <input type="hidden" name="buy_type" value="goods" />
+                <input type="hidden" name="goods_data" value="" />
+                <button type="submit"></button>
+            </form>
+
+            <!-- 加入购物车表单 -->
+            <form action="{{:MyUrl('index/cart/save')}}" method="post" class="cart-form am-hide" request-type="ajax-fun" request-value="CartSubmitBack">
+                <input type="hidden" name="goods_data" value="" />
+                <button type="submit"></button>
+            </form>
+        {{else /}}
+            <p class="goods-not-buy-tips">{{if empty($buy_button['error'])}}{{:MyLang('goods_stop_sale_title')}}{{else /}}{{$buy_button.error}}{{/if}}</p>
+        {{/if}}
+    </div>
+{{/if}}

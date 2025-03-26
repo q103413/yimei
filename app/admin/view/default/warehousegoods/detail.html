@@ -1,0 +1,49 @@
+<!-- 继承公共的 form -->
+{{extend name="../../../module/view/form_table/detail" /}}
+
+<!-- 重写数据模块 -->
+{{block name="detail_data"}}
+    {{:ModuleInclude('public/detail_nav_switch_tabs', [
+        'nav_data' => [
+            [
+                'name' => MyLang('form_base_data_title'),
+                'key'  => 'base',
+            ],
+            [
+                'name' => MyLang('warehousegoods.base_spec_inventory_title'),
+                'key'  => 'base-spec-inventory',
+            ]
+        ]
+    ])}}
+
+    <div class="detail-content-switch-data-item">
+        <!-- 父级内容 -->
+        <div class="item am-active" data-key="base">
+            {__block__}
+        </div>
+
+        <!-- 规格 -->
+        <div class="item" data-key="base-spec-inventory">
+            {{if !empty($spec)}}
+                <table class="am-table am-table-striped am-table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{:MyLang('spec_title')}}</th>
+                            <th>{{:MyLang('inventory_title')}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{foreach $spec as $v}}
+                            <tr>
+                                <td>{{$v.name}}</td>
+                                <td>{{if !empty($v['inventory'])}}{{$v.inventory}}{{/if}}</td>
+                            </tr>
+                        {{/foreach}}
+                    </tbody>
+                </table>
+            {{else /}}
+                {{:ModuleInclude('public/not_data')}}
+            {{/if}}
+        </div>
+    </div>
+{{/block}}

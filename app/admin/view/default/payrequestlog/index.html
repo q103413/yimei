@@ -1,0 +1,14 @@
+<!-- 继承公共的 form -->
+{{extend name="../../../module/view/form_table/form" /}}
+
+<!-- 表单顶部操作栏 -->
+{{block name="form_operate_top"}}
+    <!-- nav start -->
+    {{:ModuleInclude('public/admin_nav', [
+        'title'     => MyLang('payrequestlog.base_nav_title'),
+        'back_url'  => MyUrl('admin/paylog/index')
+    ])}}
+    <!-- nav end -->
+    <!-- 父级内容 -->
+    {__block__}
+{{/block}}

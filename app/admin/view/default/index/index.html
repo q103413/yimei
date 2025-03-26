@@ -1,0 +1,23 @@
+
+{{:ModuleInclude('public/header')}}
+<!-- content -->
+<div class="admin">
+	<!-- left menu -->
+	{{:ModuleInclude('public/menu')}}
+
+	<!-- right content  -->
+	<div id="ifcontent" {{if isset($appoint_to_url) and $appoint_to_url eq 1}}data-is-appoint-to-url="1"{{/if}}>
+        <!-- nav -->
+        {{:ModuleInclude('public/nav')}}
+		<div class="window-layer">
+	    	<iframe src="{{$to_url}}" width="100%" height="100%"></iframe>
+	    </div>
+	</div>
+	<!-- right content end  -->
+</div>
+
+<!-- navbar -->
+{{:ModuleInclude('public/nav_bar')}}
+
+<!-- footer -->
+{{:ModuleInclude('public/footer')}}
